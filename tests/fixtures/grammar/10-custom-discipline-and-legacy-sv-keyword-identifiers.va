@@ -1,0 +1,10 @@
+discipline logic;
+  domain discrete;
+enddiscipline
+module compatible(logic, checker);
+  input logic;
+  output checker;
+  electrical logic, checker;
+  real bit, shortreal, inside;
+  analog V(checker) <+ V(logic) + bit + shortreal + inside;
+endmodule

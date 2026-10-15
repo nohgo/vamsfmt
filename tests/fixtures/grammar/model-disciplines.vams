@@ -1,0 +1,19 @@
+// Minimal local syntax fixture; not a substitute for simulator standard headers.
+nature Voltage;
+  units = "V";
+  access = V;
+  abstol = 1u;
+endnature
+nature Current;
+  units = "A";
+  access = I;
+  abstol = 1p;
+endnature
+discipline electrical;
+  potential Voltage;
+  flow Current;
+  domain continuous;
+enddiscipline
+discipline logic;
+  domain discrete;
+enddiscipline

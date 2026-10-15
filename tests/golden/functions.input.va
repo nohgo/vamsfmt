@@ -1,0 +1,1 @@
+module f(p);electrical p;analog function real clip;input x;real x;begin if(x<0)clip=0;else if(x>1)clip=1;else clip=x;end endfunction analog V(p)<+clip(V(p));endmodule

@@ -1,0 +1,12 @@
+module mixed(input clk, output reg state, inout electrical p);
+  real value;
+  initial state = 0;
+  always @(posedge clk) begin
+    state <= ~state;
+  end
+  analog begin
+    @(initial_step) value = 0.0;
+    @(posedge clk) value = state ? 1.2 : 0.0;
+    V(p) <+ transition(value, 0, 1n);
+  end
+endmodule

@@ -1,0 +1,14 @@
+module events(p, clk);
+  electrical p;
+  input clk;
+  real held;
+  analog begin
+    @(initial_step) held = 0.0;
+    @(initial_step("dc", "tran") or final_step) $strobe("time=%g", $abstime);
+    @(cross(V(p) - 0.5, +1, , 1u)) held = V(p);
+    @(above(V(p) - 0.1) or timer(0, 1n)) held = V(p);
+    @(posedge clk) held = 1.0;
+    @(cross(V(p)), timer(1n)) ;
+    V(p) <+ transition(held, 0, 1n, 1n);
+  end
+endmodule

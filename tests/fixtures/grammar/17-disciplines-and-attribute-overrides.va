@@ -1,0 +1,9 @@
+discipline electrical;
+  potential Voltage;
+  flow Current;
+  domain continuous;
+  potential.abstol = 1u;
+enddiscipline
+discipline logic;
+  domain discrete;
+enddiscipline

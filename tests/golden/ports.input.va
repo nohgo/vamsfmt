@@ -1,0 +1,3 @@
+module amplifier(input electrical positive_input, input electrical negative_input, output electrical output_voltage);
+analog V(output_voltage)<+V(positive_input,negative_input);
+endmodule

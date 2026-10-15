@@ -1,0 +1,9 @@
+module probes(p, n);
+  electrical [3:0] p;
+  electrical n;
+  analog begin
+    I(p[0], n) <+ (V(p[0], n) + V(p[1])) * 2.0;
+    V(n) <+ I(<n>) + $temperature * exp(-V(p[2]) / 0.025);
+    I(p[3]) <+ V(p[0]) > 0 ? pow(V(p[0]), 2) : -1.0;
+  end
+endmodule

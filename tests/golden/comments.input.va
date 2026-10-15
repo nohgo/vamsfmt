@@ -1,0 +1,15 @@
+// μ model
+`include "disciplines.vams"
+  `define SCALE(x) \
+       ((x) * 2) // do not reindent the macro body
+module m(p); // module comment
+// port comment
+electrical p;
+analog begin
+// attached to contribution
+I(p)<+`SCALE(V(p)); // trailing comment
+/* keep
+       these columns */
+V(p)<+0;
+end
+endmodule

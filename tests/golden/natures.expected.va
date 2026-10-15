@@ -1,0 +1,14 @@
+nature Voltage;
+  units = "V";
+  access = V;
+  abstol = 1u;
+endnature
+nature Small : Voltage
+  abstol = 1n;
+endnature
+discipline electrical;
+  potential Voltage;
+  flow Current;
+  potential.abstol = 1u;
+  domain continuous;
+enddiscipline

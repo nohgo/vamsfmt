@@ -1,0 +1,14 @@
+module params;
+  parameter real gain = 1 from [0:inf) exclude 0;
+  parameter real offset = 0 from (-inf:inf) exclude [-2:-1];
+  parameter integer mode = 1 from [0:3];
+  parameter string label = "a" from '{"a", "b"};
+  parameter real coeff[0:2] = '{1.0, 2.0, 3.0};
+  localparam real tau = 1.0 / (2.0 * 3.14159);
+  aliasparam g = gain;
+  real samples[0:7], x = 0.0;
+  integer i;
+  genvar k;
+  wreal signal;
+  wire electrical [3:0] bus;
+endmodule

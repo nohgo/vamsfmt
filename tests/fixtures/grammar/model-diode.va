@@ -1,0 +1,15 @@
+`include "disciplines.vams"
+module diode(anode, cathode);
+  inout anode, cathode;
+  electrical anode, cathode;
+  parameter real isat = 1e-14 from (0:inf);
+  parameter real emission = 1.0 from (0:inf);
+  parameter real cj = 1p from [0:inf);
+  real vt, current;
+  analog begin : behavior
+    vt = emission * $vt;
+    current = isat * (limexp(V(anode, cathode) / vt) - 1.0);
+    I(anode, cathode) <+ current + cj * ddt(V(anode, cathode));
+    I(anode, cathode) <+ white_noise(2.0 * 1.602e-19 * abs(current), "shot");
+  end
+endmodule

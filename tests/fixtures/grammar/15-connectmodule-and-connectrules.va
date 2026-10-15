@@ -1,0 +1,11 @@
+discipline logic;
+  domain discrete;
+enddiscipline
+connectmodule e2l(input electrical a, output reg d);
+  always @(cross(V(a) - 0.5)) d = V(a) > 0.5;
+endmodule
+connectrules bridge;
+  connect e2l merged #(.threshold(0.5)) input electrical, output logic;
+  connect electrical, logic resolveto electrical;
+  connect logic resolveto exclude;
+endconnectrules

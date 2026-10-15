@@ -1,0 +1,11 @@
+module capacitor(p, n);
+  inout p, n;
+  electrical p, n;
+  parameter real c = 1p;
+  analog begin
+    I(p, n) <+ c * ddt(V(p, n));
+    V(p) <+ idt(I(p, n), 0);
+    V(n) <+ laplace_nd(V(p), {1.0}, {1.0, 1u});
+    I(p) <+ white_noise(1e-18, "thermal") + flicker_noise(1e-20, 1.0, "flicker");
+  end
+endmodule

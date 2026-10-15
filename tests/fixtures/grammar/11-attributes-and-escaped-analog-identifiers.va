@@ -1,0 +1,7 @@
+(* desc = "two terminal device" *)
+module escaped(\p+ , n);
+  inout \p+ , n;
+  electrical \p+ , n;
+  parameter real r = 100;
+  analog I(\p+ , n) <+ V(\p+ , n) / r;
+endmodule

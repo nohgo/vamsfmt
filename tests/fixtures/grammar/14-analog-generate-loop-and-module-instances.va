@@ -1,0 +1,11 @@
+module bank(p, n);
+  electrical [3:0] p;
+  electrical n;
+  genvar k;
+  generate
+    for (k = 0; k < 4; k = k + 1) begin : cells
+      resistor #(.r(1k)) r0(.p(p[k]), .n(n));
+    end
+  endgenerate
+  analog for (k = 0; k < 4; k = k + 1) I(p[k], n) <+ 1u;
+endmodule

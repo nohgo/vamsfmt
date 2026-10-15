@@ -1,0 +1,7 @@
+`include "disciplines.vams"
+module capacitor(p, n);
+  inout p, n;
+  electrical p, n;
+  parameter real c = 1p from [0:inf);
+  analog I(p, n) <+ c * ddt(V(p, n));
+endmodule

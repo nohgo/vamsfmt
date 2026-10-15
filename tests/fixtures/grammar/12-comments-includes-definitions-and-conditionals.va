@@ -1,0 +1,19 @@
+// Preserve the original source; includes are not resolved.
+`include "disciplines.vams"
+`define GAIN (2.0)
+`define SCALE(x) ((x) * `GAIN)
+`define CONTRIB(p, n) \
+  I(p,n) <+ V(p,n)
+module macros(p, n);
+  inout p, n;
+  electrical p, n;
+  /* A block comment beside a parameter. */
+  parameter real gain = `GAIN;
+  analog begin
+`ifdef ACTIVE
+    I(p, n) <+ `SCALE(V(p, n)); // attached comment
+`else
+    I(p, n) <+ 0.0;
+`endif
+  end
+endmodule

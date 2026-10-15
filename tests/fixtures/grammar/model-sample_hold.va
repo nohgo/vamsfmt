@@ -1,0 +1,21 @@
+`include "disciplines.vams"
+module sample_hold(input electrical signal, clk, output electrical out);
+  parameter real threshold = 0.5;
+  parameter real rise = 1n from (0:inf);
+  real held;
+  analog function real clip;
+    input x;
+    real x;
+    begin
+      if (x > 1.2) clip = 1.2;
+      else if (x < 0.0) clip = 0.0;
+      else clip = x;
+    end
+  endfunction
+  analog begin
+    @(initial_step("dc", "tran")) held = 0.0;
+    @(cross(V(clk) - threshold, 1)) held = clip(V(signal));
+    V(out) <+ transition(held, 0.0, rise, rise);
+    @(final_step) $strobe("last sample = %g", held);
+  end
+endmodule

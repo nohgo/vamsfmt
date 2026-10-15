@@ -1,0 +1,14 @@
+module m;
+  integer i;
+  electrical [3:0] p;
+  analog begin
+    for (i = 0; i < 4; i = i + 1) begin
+      case (i)
+        0, 1: I(p[i]) <+ 1u;
+        default: begin
+          I(p[i]) <+ 0;
+        end
+      endcase
+    end
+  end
+endmodule

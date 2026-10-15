@@ -1,0 +1,10 @@
+# Local editor and operating-system files.
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Build and distribution output; dependency lockfiles remain trackable.
+/target/
+/dist/
+/build/

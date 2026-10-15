@@ -1,0 +1,17 @@
+module piecewise(p);
+  electrical p;
+  integer mode;
+  analog begin
+    if (V(p) > 1.0)
+      I(p) <+ 1m;
+    else if (V(p) < -1.0)
+      I(p) <+ -1m;
+    else
+      I(p) <+ 1m * V(p);
+    case (mode)
+      0, 1: V(p) <+ 0.0;
+      2: begin I(p) <+ 1u; end
+      default: ;
+    endcase
+  end
+endmodule

@@ -1,0 +1,9 @@
+`include "disciplines.vams"
+// A resistor with a constrained resistance and a named branch.
+module resistor(p, n);
+  inout p, n;
+  electrical p, n;
+  parameter real r = 1k from (0:inf);
+  branch (p, n) resistor_branch;
+  analog I(resistor_branch) <+ V(resistor_branch) / r;
+endmodule

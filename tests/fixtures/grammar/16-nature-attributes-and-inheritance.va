@@ -1,0 +1,13 @@
+nature Voltage;
+  units = "V";
+  access = V;
+  abstol = 1u;
+  idt_nature = Flux;
+  ddt_nature = Slew;
+endnature
+nature Sensitive : Voltage
+  abstol = 1n;
+endnature
+nature Derived : electrical.potential;
+  units = "scaled";
+endnature

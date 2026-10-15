@@ -1,0 +1,13 @@
+`include "disciplines.vams"
+module mixed_signal(input clk, input [3:0] code, output reg flag, inout electrical out);
+  parameter real vref = 1.2;
+  real value;
+  integer i;
+  always @(posedge clk) flag <= code[3];
+  analog begin
+    value = 0.0;
+    for (i = 0; i < 4; i = i + 1)
+      value = value + ((code[i] == 1'b1) ? pow(2.0, i) : 0.0);
+    V(out) <+ transition(vref * value / 15.0, 0, 1n);
+  end
+endmodule

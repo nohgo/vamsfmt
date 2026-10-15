@@ -1,0 +1,14 @@
+module m;
+electrical p;
+analog
+begin
+if(V(p)>1)
+begin
+I(p)<+1u;
+end
+else
+begin
+I(p)<+0;
+end
+end
+endmodule

@@ -1,0 +1,20 @@
+module functions(p);
+  electrical p;
+  analog function real limit;
+    input x, bound;
+    real x, bound, result;
+    integer i;
+    begin
+      result = x;
+      for (i = 0; i < 2; i = i + 1) result = result / 2;
+      if (result > bound) limit = bound;
+      else begin
+        case (i)
+          0: limit = 0;
+          default: limit = result;
+        endcase
+      end
+    end
+  endfunction
+  analog V(p) <+ limit(sin($abstime), 1.0);
+endmodule

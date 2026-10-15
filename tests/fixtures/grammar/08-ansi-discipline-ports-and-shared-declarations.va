@@ -1,0 +1,7 @@
+module amplifier #(parameter real gain = 2.0) (
+  input electrical inp, inn,
+  output electrical out,
+  input wire enable
+);
+  analog V(out) <+ enable ? gain * V(inp, inn) : 0;
+endmodule

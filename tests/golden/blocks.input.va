@@ -1,0 +1,1 @@
+module resistor(p,n);inout p,n;electrical p,n;parameter real r=1k from(0:inf);analog begin if(V(p,n)>0)begin I(p,n)<+V(p,n)/r;end else I(p,n)<+0;end endmodule

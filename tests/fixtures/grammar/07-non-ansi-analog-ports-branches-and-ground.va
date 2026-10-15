@@ -1,0 +1,10 @@
+module resistor(p, n);
+  inout p, n;
+  electrical p, n;
+  ground electrical gnd;
+  branch (p, n) resistor_branch;
+  branch (p) to_ground;
+  branch (<p>) port_current;
+  parameter real r = 1k from (0:inf);
+  analog I(resistor_branch) <+ V(p, n) / r;
+endmodule
