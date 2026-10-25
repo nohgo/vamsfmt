@@ -4,7 +4,7 @@
 
 Build a standalone Rust CLI, independent of Neovim and Cadence. Embed the C parser
 through the grammar's Rust binding. Pin `tree-sitter-verilog-ams` to published Git
-revision `0b2672e76ff2941fb62081b5d42b0ae84a0f6c46` and use Tree-sitter runtime
+revision `92c803343d0e2f79475b28558655f6fbe207cebb` and use Tree-sitter runtime
 0.26.13. Builds must not depend on the neighboring workspace checkout.
 
 The first formatting rules target indentation, statement/block layout, ordinary

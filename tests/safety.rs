@@ -92,6 +92,8 @@ fn syntax_failures_emit_no_stdout_in_both_modes() {
         "module m; analog begin V(p)<+1; endmodule",
         "module m; electrical p analog V(p)<+1; endmodule",
         "module m; parameter real r; endmodule",
+        "module first; wire a; module second; wire b; endmodule",
+        "module m; begin n; endmodule",
     ] {
         for args in [vec![], vec!["--pass-through"]] {
             let result = run(input.as_bytes(), &args);

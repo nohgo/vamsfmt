@@ -6,7 +6,7 @@ Cadence, or a simulator license.
 
 The parser is embedded from the published
 [tree-sitter-verilog-ams](https://github.com/nohgo/tree-sitter-verilog-ams) grammar,
-pinned to `0b2672e76ff2941fb62081b5d42b0ae84a0f6c46`. Builds do not depend on a
+pinned to `92c803343d0e2f79475b28558655f6fbe207cebb`. Builds do not depend on a
 neighboring grammar checkout. See [architecture](docs/ARCHITECTURE.md) for the
 source-preservation design and [coverage](docs/COVERAGE.md) for limitations.
 
